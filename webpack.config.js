@@ -33,16 +33,6 @@ module.exports = {
           },
         },
       },
-      // {
-      //   test: /\.(png|jpg|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'url-loader',
-      //       name: 'images/[name].[ext]',
-      //       esModule: false,
-      //     },
-      //   ],
-      // },
     ],
   },
   devServer: {
