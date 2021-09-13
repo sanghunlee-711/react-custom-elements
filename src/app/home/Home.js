@@ -9,7 +9,11 @@ const Home = () => {
           src={HomeImage}
           className="img-home"
           onClick={() => console.log('onClick ~')}
-          alt="home"
+          alt="home-file-loader"
+        />
+        <img
+          src="../../assets/img/1_home_landing_1x.png"
+          alt="home-url-loader"
         />
       </section>
     </div>

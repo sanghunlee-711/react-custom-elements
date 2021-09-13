@@ -33,6 +33,17 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            publicPath: './dist/', // file loader와 동일
+            name: '[name].[ext]?[hash]', // file loader와 동일
+            limit: 5000,
+          },
+        },
+      },
     ],
   },
   devServer: {
