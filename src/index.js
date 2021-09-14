@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+import App from './app/root/App';
 
 ReactDOM.render(<App />, document.getElementById('container')); //그럼 여따가 하면 안되려나 ..
 

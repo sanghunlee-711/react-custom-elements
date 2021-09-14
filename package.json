@@ -1,32 +1,39 @@
 {
-  "name": "tag-react",
+  "name": "react-custom-elements",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "custom elements with webpack setting from scratch",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "SERVE=true webpack serve",
+    "watch": "webpack --watch",
+    "build": "NODE_ENV=production webpack",
+    "build-dev": "webpack",
+    "clean": "rm -rf ./dist"
   },
-  "author": "",
+  "author": "sanghun lee",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.2",
-    "css-loader": "^1.0.0",
-    "file-loader": "^6.2.0",
-    "style-loader": "^0.23.0",
-    "url-loader": "^4.1.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.9.0"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^5.0.0-beta.5",
+    "mini-css-extract-plugin": "^1.3.4",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^4.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "react-refresh": "^0.9.0",
+    "sass": "^1.32.4",
+    "sass-loader": "^10.1.1",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.3.11"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
