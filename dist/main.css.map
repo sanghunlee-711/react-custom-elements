@@ -1,1 +1,0 @@
-{"version":3,"file":"main.css","mappings":"AAAA,KACE,YACA,uC","sources":["webpack://react-custom-elements/./src/styles/App.css"],"sourcesContent":[".App {\n  margin: 1rem;\n  font-family: Arial, Helvetica, sans-serif;\n}\n"],"names":[],"sourceRoot":""}
