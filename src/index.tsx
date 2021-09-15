@@ -3,20 +3,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/root/App';
-
-interface CompProps {
-  name?: string;
-}
+import { CompProps } from './model/types';
 
 interface IAttrs {
-  name: string;
-  value: string;
+  [key: string]: string;
 }
 
 interface IProps extends CompProps {
-  key: string;
-  class?: string;
-  className?: string;
+  [key: string]: string | undefined;
 }
 
 function renderNode(
@@ -31,9 +25,7 @@ function renderNode(
   };
 
   attrs.map((attr) => {
-    const key: typeof props = attr.name;
-
-    return (props[key] = attr.value);
+    return (props[attr.name] = attr.value);
   });
 
   if (!!props.class) {
@@ -45,7 +37,7 @@ function renderNode(
 }
 
 // custom tags
-function render(tag: string, Comp: React.FC<Iprops>) {
+function render(tag: string, Comp: React.FC<CompProps>) {
   document.createElement(tag);
 
   const nodes: Element[] = Array.from(document.getElementsByTagName(tag));

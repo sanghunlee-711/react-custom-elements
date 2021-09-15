@@ -1,5 +1,5 @@
 // https://medium.com/@JedaiSaboteur/creating-a-react-app-from-scratch-f3c693b84658
-
+// https://typescript-kr.github.io/pages/tutorials/react-&-webpack.html
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,7 +30,7 @@ if (process.env.SERVE) {
 module.exports = {
   // mode defaults to 'production' if not set
   mode: mode,
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     // output path is required for `clean-webpack-plugin`
     path: path.resolve(__dirname, 'dist'),
@@ -77,38 +77,17 @@ module.exports = {
         //   },
         // },
       },
-      //       {
-      //         test: /\.css$/, //png 확장자 처리
-      //         use: [
-      //           'style-loader', // 모듈로 변경된 스타일 시트를 돔에 추가하기 위함
-      //           'css-loader', //.css 확장자파일을 모듈로  변경하는 로더
-      //         ],
-      //       },
-      //       {
-      //         //소스코드에서 사용하는 모든파일을 모듈로 사용하게끔 만들어준다.
-      //         test: /\.png$/, //png 확장자 처리
-      //         loader: 'file-loader',
-      //         options: {
-      //           //publicPath옵션은 file-loader가 처리하는 파일을 모듈로 사용할 때 경로앞에 추가되는 문자열이다.
-      //           publicPath: '../dist/', // prefix를 아웃풋 경로로 지정함
-      //           name: '[name].[ext]', //  파일명 형식
-      //           // -> hash사용이유는 캐쉬갱신을 위함
-      //           //-> 정적 파일의 경우 브라우저 성능을 위해 캐시하게 되는데 내용이 달라지고
-      //           // -> 이름이 같으면 브라우저가 이전 캐시로 저장했던 내용을 사용하는 것을 방지하기 위함
-      //         },
-      //       },
-      //       {
-      //         // test: /\.(png|jpg|gif|svg)$/,
-      //         test: /\.png$/, //png 확장자 처리
-      //         use: {
-      //           loader: 'url-loader',
-      //           options: {
-      //             publicPath: '../dist/',
-      //             name: '[name].[ext]?[hash]',
-      //             limit: 5000,
-      //           },
-      //         },
-      //       },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'ts-loader' }],
+      },
+      // 모든 '.js' 출력 파일은 'source-map-loader'에서 다시 처리한 소스 맵이 있습니다.
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -126,27 +105,22 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.tsx?$/i,
-        exclude: /node_modules/,
-        use: ['ts-loader'],
-      },
     ],
   },
-
   plugins: plugins,
-
   target: target,
-
+  // Webpack의 출력물에서 디버깅을 하기위해 소스 맵 사용
   devtool: 'source-map',
-
   resolve: {
-    extensions: ['ts', 'tsx', '.js', '.jsx', 'json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-
   // required if using webpack-dev-server
   devServer: {
     contentBase: './dist',
     hot: true,
   },
+  // externals: {
+  //   react: 'React',
+  //   'react-dom': 'ReactDOM',
+  // },
 };

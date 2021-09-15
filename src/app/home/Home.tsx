@@ -1,12 +1,9 @@
 import React from 'react';
 import HomeImage from '../../image/1_home_landing_1x.png';
+import { HomeCompProps } from '../../model/types';
 import '../../styles/sass.scss';
 
-interface IProps {
-  propsText: string;
-}
-
-const Home: React.FC<IProps> = (props) => {
+const Home: React.FC<HomeCompProps> = (props) => {
   const wrapper = document.getElementById('container');
   const newCustomEvent = new CustomEvent('onOpen');
 
