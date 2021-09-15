@@ -2,7 +2,11 @@ import React from 'react';
 import '../../styles/App.css';
 import Home from '../home/Home';
 
-const App = (props) => {
+interface Iprops {
+  name: string;
+}
+
+const App: React.FC<Iprops> = (props) => {
   return (
     <div className="App">
       <h1>Hello ,{props.name}</h1>

@@ -2,12 +2,16 @@ import React from 'react';
 import HomeImage from '../../image/1_home_landing_1x.png';
 import '../../styles/sass.scss';
 
-const Home = (props) => {
+interface IProps {
+  propsText: string;
+}
+
+const Home: React.FC<IProps> = (props) => {
   const wrapper = document.getElementById('container');
   const newCustomEvent = new CustomEvent('onOpen');
 
   const openModal = () => {
-    wrapper.dispatchEvent(newCustomEvent);
+    wrapper?.dispatchEvent(newCustomEvent);
     alert('in react alert');
   };
 
@@ -16,9 +20,8 @@ const Home = (props) => {
       <section className="dtimeBx">
         <span>{props.propsText} In Home Comp</span>
         <img
-          className="mainImg"
-          src={HomeImage}
           className="img-home"
+          src={HomeImage}
           alt="home-file-loader"
           onClick={openModal}
         />

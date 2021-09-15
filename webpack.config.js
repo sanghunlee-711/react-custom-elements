@@ -126,6 +126,11 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.tsx?$/i,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
     ],
   },
 
@@ -136,7 +141,7 @@ module.exports = {
   devtool: 'source-map',
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['ts', 'tsx', '.js', '.jsx', 'json'],
   },
 
   // required if using webpack-dev-server
