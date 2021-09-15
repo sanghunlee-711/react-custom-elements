@@ -9,16 +9,14 @@
 </head>
 
 <body>
-  <my-example id="container"></my-example>
+  <dtime-react-element id="container" name="Dtime Props"></dtime-react-element>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <script src="../dist/bundle.js"></script>
+  <script src="../dist/main.js"></script>
   <script type="text/javascript" defer>
     const dtime = document.getElementById('container')
-    dtime.addEventListener("onOpen", () => alert("!!!!")); // 기존 onOpen event 그대로 유지
-
-
+    dtime.addEventListener("onOpen", () => alert("index.html script alert")); // 기존 onOpen 실행 event 그대로 유지
   </script>
 </body>
 

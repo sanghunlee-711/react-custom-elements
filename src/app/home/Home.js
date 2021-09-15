@@ -1,33 +1,20 @@
-import { EventEmitter } from 'events';
-import React, { useEffect } from 'react';
+import React from 'react';
 import HomeImage from '../../image/1_home_landing_1x.png';
+import '../../styles/sass.scss';
 
-const Home = () => {
-  const onTest = new EventEmitter();
-  const ref = React.useRef(null);
+const Home = (props) => {
   const wrapper = document.getElementById('container');
-  const newCustomEvent = new CustomEvent('onOpen', (e) => {
-    console.log('in react!', e);
-  });
+  const newCustomEvent = new CustomEvent('onOpen');
 
   const openModal = () => {
-    // onTest.emit('onOpen');
     wrapper.dispatchEvent(newCustomEvent);
-
-    console.log('just on Click');
+    alert('in react alert');
   };
 
-  useEffect(() => {
-    const newCustomEvent = new CustomEvent('onOpen', (e) => {
-      console.log('in react!', e);
-    });
-
-    // wrapper.dispatchEvent(newCustomEvent);
-  }, []);
-
   return (
-    <div ref={ref} className="dtimeBoxWrap">
+    <div className="dtimeBoxWrap">
       <section className="dtimeBx">
+        <span>{props.propsText} In Home Comp</span>
         <img
           className="mainImg"
           src={HomeImage}
@@ -35,10 +22,6 @@ const Home = () => {
           alt="home-file-loader"
           onClick={openModal}
         />
-        {/* <img
-          src="../../image/1_home_landing_1x.png'"
-          alt="image-webpack-loader"
-        /> */}
       </section>
     </div>
   );

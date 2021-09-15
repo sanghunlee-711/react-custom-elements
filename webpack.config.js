@@ -2,18 +2,18 @@
 
 const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let mode = 'development';
 let target = 'web';
 const plugins = [
   new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
-  new HtmlWebpackPlugin({
-    template: './src/index.html',
-  }),
+  // new MiniCssExtractPlugin(),
+  // new HtmlWebpackPlugin({
+  //   template: './src/index.html',
+  // }),
 ];
 
 if (process.env.NODE_ENV === 'production') {
@@ -43,16 +43,16 @@ module.exports = {
       {
         test: /\.(s[ac]|c)ss$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            // This is required for asset imports in CSS, such as url()
-            options: { publicPath: '' },
-          },
+          // {
+          // loader: MiniCssExtractPlugin.loader,
+          // This is required for asset imports in CSS, such as url()
+          // options: { publicPath: '' },
+          // },
           //웹팩 로더는 한 파일에 대해 여러가지가 실행되는데 배열의 뒤에서부터 앞으로 작동한다.
-          'css-loader',
-          //           'style-loader', // 모듈로 변경된 스타일 시트를 돔에 추가하기 위함 -> postcss-loader가 대체
-          'postcss-loader',
-          'sass-loader',
+          'style-loader', // js로 생성된 css를 styles 노드로 생성
+          'css-loader', // css 를 js로
+          // 'postcss-loader',
+          'sass-loader', // sass -> css로 컴파일
         ],
       },
       {

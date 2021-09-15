@@ -4,8 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/root/App';
 
-ReactDOM.render(<App />, document.getElementById('container')); //그럼 여따가 하면 안되려나 ..
-
 function renderNode(tag, Comp, node, i) {
   let attrs = Array.prototype.slice.call(node.attributes);
   let props = {
@@ -32,4 +30,4 @@ function render(tag, Comp) {
   return Comp;
 }
 
-render('my-example', App);
+render('dtime-react-element', App);
