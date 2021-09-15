@@ -1,18 +1,32 @@
 import { EventEmitter } from 'events';
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeImage from '../../image/1_home_landing_1x.png';
 
 const Home = () => {
   const onTest = new EventEmitter();
+  const ref = React.useRef(null);
+  const wrapper = document.getElementById('container');
+  const newCustomEvent = new CustomEvent('onOpen', (e) => {
+    console.log('in react!', e);
+  });
 
   const openModal = () => {
-    onTest.emit('onOpen');
+    // onTest.emit('onOpen');
+    wrapper.dispatchEvent(newCustomEvent);
 
-    console.log(onTest.listeners('event'));
+    console.log('just on Click');
   };
 
+  useEffect(() => {
+    const newCustomEvent = new CustomEvent('onOpen', (e) => {
+      console.log('in react!', e);
+    });
+
+    // wrapper.dispatchEvent(newCustomEvent);
+  }, []);
+
   return (
-    <div className="dtimeBoxWrap">
+    <div ref={ref} className="dtimeBoxWrap">
       <section className="dtimeBx">
         <img
           className="mainImg"

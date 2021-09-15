@@ -6,16 +6,6 @@ import App from './app/root/App';
 
 ReactDOM.render(<App />, document.getElementById('container')); //그럼 여따가 하면 안되려나 ..
 
-// custom tags
-function render(tag, Comp) {
-  document.createElement(tag);
-
-  const nodes = Array.from(document.getElementsByTagName(tag));
-  nodes.map((node, i) => renderNode(tag, Comp, node, i));
-
-  return Comp;
-}
-
 function renderNode(tag, Comp, node, i) {
   let attrs = Array.prototype.slice.call(node.attributes);
   let props = {
@@ -30,6 +20,16 @@ function renderNode(tag, Comp, node, i) {
   }
 
   ReactDOM.render(<Comp {...props} />, node);
+}
+
+// custom tags
+function render(tag, Comp) {
+  document.createElement(tag);
+
+  const nodes = Array.from(document.getElementsByTagName(tag));
+  nodes.map((node, i) => renderNode(tag, Comp, node, i));
+
+  return Comp;
 }
 
 render('my-example', App);
